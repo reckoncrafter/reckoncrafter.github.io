@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<html>
+<head> 
+    <title>Dawson Finklea &mdash; About</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet"> 
+</head>
+<style>
+@import url(/stylesheet.css);
+body{
+    background-color:#3d5a80;
+}
+div.filter{
+    background:linear-gradient(360deg,black, transparent);
+    width:100%;
+    min-height:100%;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+#pagegrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.2fr 1.8fr;
+  gap: 0 0;
+  grid-template-areas:
+    "title"
+    "body";
+}
+#header{
+    grid-area: title;
+}
+#_body{
+    grid-area: body;
+}
+#perspective{
+    height:600px;
+    perspective: 40px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    width:fit-content;
+}
+#perspective #inner{
+    height:600px;
+    perspective: 40px;
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+}
+#inner{
+    border-radius: 10px;
+    height:100%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+@media only screen and (max-width: 600px) {
+  #pagegrid{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 1.8fr;
+    gap: 0 0;
+    grid-template-areas:
+    "title"
+    "body";
+  }
+}
+</style>
+<body>
+    <div class="sidenav" id="variableWidth" style="color:white;">
+        <div>
+            <p style="font-size:14pt;color:#818181;font-family:'Playfair Display';font-weight:800;position:absolute;top:-3px;left:10px;">Dawson&nbsp;Finklea.</p>    
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav();showBurger()">&times;</a>   
+        </div>
+        <a href="/"><span class="button">HOME&nbsp;/&nbsp;</span></a>
+        <a href="/about"><span class="button">ABOUT&nbsp;/&nbsp;</span></a>
+        <a href="/projects"><span class="button">PROJECTS&nbsp;/&nbsp;</span></a>
+    </div>
+    <div class="filter"></div>
+    <div id="pagegrid">
+        <div id="header">
+            <p class="title">About.</p>
+            <span id="burger" onclick="openNav();hideBurger()">&#9776;</span>
+        </div>
+        <div id="_body">
+            <div>
+                <div id="perspective">
+                        <img id="inner" src="/me_without_glasses.jpg">
+                </div>
+            </div>
+            <p style="margin-left:60px;margin-right:60px;color:white;font-family:'Josefin Sans';line-height:1.6;text-align:center;">
+                My name is Dawson Finklea. I am a freshman at University of North Texas, studying computer science.<br>
+                I am an amateur programmer making projects for fun in C++, Python, and Javascript.<br>
+            </p>
+        </div>
+    </div>
+    <script src="/sidenav.js"></script>
+    <script src="/perspective.js"></script>
+</body>
+</html>
