@@ -8,35 +8,27 @@
         <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Dawson Finklea</title>
+        <script
+          src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+          crossorigin="anonymous">
+        </script>
     </head>
 <body>
-    <div class="text-center">
-        <div class="container-fluid">
-            <div class="row">
-              <div class="col-sm-3">
-                <a class="plain" href="/"><h2>[HOME]</h2></a>
-              </div>
-              <div class="col-sm-3">
-                <a class="plain" href="/blog"><h2>[BLOG]</h2></a>
-              </div>
-              <div class="col-sm-3">
-                <a class="plain" href="/repos"><h2>[REPOS]</h2></a>
-              </div>
-              <div class="col-sm-3">
-                <a class="plain" href="/writing"><h2>[WRITING]</h2></a>
-              </div>
-            </div>
-            <hr>
-        </div>
 
-        <h1>Welcome!</h1>
-        <br>
-        <p>My name is Dawson, and I am a C++ programmer, and web developer in training.</p>
-        <p>I’m currently studying for my B.S. in Computer Science at the University of North Texas.</p>
-        <p>This site contains my github projects, essays, and some creative writing that I felt was worth publishing.</p>
-        <p>Please enjoy your stay, and feel free to <a href="mail:dawsfinklea@gmail.com">drop me a line</a>.</p>
-        <hr>
-    </div>
+        <div id="navbar"></div>
+
+        <div class="main">
+          <div class="text-center">
+            <h1>Welcome!</h1>
+            <br>
+            <p>My name is Dawson, and I am a C++ programmer, and web developer in training.</p>
+            <p>I’m currently studying for my B.S. in Computer Science at the University of North Texas.</p>
+            <p>This site contains my github projects, essays, and some creative writing that I felt was worth publishing.</p>
+            <p>Please enjoy your stay, and feel free to <a href="mail:dawsfinklea@gmail.com">drop me a line</a>.</p>
+            <hr>
+          </div>
+        </div>
 
         <button id="dm-toggle" onclick="toggleMode()"></button>
         <script src="/theme.js"></script>

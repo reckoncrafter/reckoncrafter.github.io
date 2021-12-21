@@ -35,3 +35,7 @@ if(sessionStorage.getItem("theme") == "light"){
 else{
     darkMode();
 }
+// Load Navbar
+$(function(){
+    $("#navbar").load("/navbar.html"); 
+});
