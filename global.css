@@ -56,6 +56,9 @@ button{
 .container-fluid{
     width:50%;
 }
+.wr-category{
+    text-align: right;
+}
 @media (max-width: 400px){
     body{
         margin-left: 2%;
