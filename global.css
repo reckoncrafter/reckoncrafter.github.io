@@ -40,7 +40,7 @@ hr{
     text-decoration: none;
     transform: scale(1.2);
 }
-.writing{
+#writing{
     margin-left: 25%;
     margin-right: 25%;
 }
@@ -67,7 +67,7 @@ button{
     h1{
         font-size: 1.6em;
     }
-    .writing{
+    #writing{
         margin-left: 5%;
         margin-right: 5%;
     }
