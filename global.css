@@ -40,6 +40,10 @@ hr{
     text-decoration: none;
     transform: scale(1.2);
 }
+.writing{
+    margin-left: 25%;
+    margin-right: 25%;
+}
 button{
     border: none;
     background-color: transparent;
@@ -62,5 +66,9 @@ button{
     }
     h1{
         font-size: 1.6em;
+    }
+    .writing{
+        margin-left: 5%;
+        margin-right: 5%;
     }
 }
