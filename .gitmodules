@@ -1,0 +1,3 @@
+[submodule "onslaught-js"]
+	path = onslaught-js
+	url = https://github.com/reckoncrafter/onslaught-js
