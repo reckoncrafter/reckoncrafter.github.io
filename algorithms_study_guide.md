@@ -1,26 +1,7 @@
 ---
 HTML header:	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 ---
-<style>
-body{
-    font-family: Fairfax HD, monospace
-}
-dt{
-    text-decoration: underline;
-}
-blockquote {
-    border-left: 4px solid grey;
-    padding-left: 8px;
-}
-table, th, td {
-    border: 1px solid;
-    text-align: center;
-    padding: 4px;
-}
-table {
-    border-collapse: collapse;
-}
-</style>
+<link rel="stylesheet" href="stylesheet.css">
 # Algorithms Study Guide
 
 ## P and NP (6 sub questions)

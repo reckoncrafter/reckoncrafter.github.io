@@ -1,0 +1,32 @@
+:root {
+    color-scheme: light dark;
+    --default-fg-colors: light-dark(#202020, #ECECF0);
+    --default-bg-colors: light-dark(#EAEAEF, #1D1D1D);
+}
+body {
+    font-family: Fairfax HD, monospace;
+    color: var(--default-fg-colors);
+    background-color: var(--default-bg-colors);
+}
+img{
+    background-color: white;
+    max-width:100%;
+}
+dt{
+    text-decoration: underline;
+}
+blockquote {
+    border-left: 4px solid grey;
+    padding-left: 8px;
+}
+table, th, td {
+    border: 1px solid;
+    text-align: center;
+    padding: 4px;
+}
+table {
+    border-collapse: collapse;
+}
+dd::before {
+    content: "» ";
+}
