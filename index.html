@@ -1,13 +1,295 @@
-<link rel="stylesheet" href="stylesheet.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dawson "Asa" Finklea</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div class="desktop">
+        <div class="icon" id="i_about_me" win="w_about_me">
+            <img src="ico/User.ico">
+            <span>About Me</span>
+        </div>
+        <div class="icon" id="i_work" win="w_work">
+            <img src="ico/Briefcase.ico">
+            <span>Work</span>
+        </div>
+        <div class="icon" id="i_blog" win="w_blog">
+            <img src="ico/Newspaper (yellow 3D).ico">
+            <span>Blog</span>
+        </div>
+        <div class="icon" id="i_skills" win="w_skills">
+            <img src="ico/Book 2.ico">
+            <span>Skills</span>
+        </div>
+        <div class="icon" id="i_msdos" win="w_msdos">
+            <img src="ico/MS-DOS logo.ico">
+            <span>MS-DOS</span>
+        </div>
+        <a href="https://www.github.com/reckoncrafter/vrblocks" target="_blank" style="text-decoration: none; color:white;">
+        <div class="icon" id="i_github" win="w_github">
+            <img src="ico/Link on Document with Earth.ico">
+            <span>VRBlocks</span>
+        </div>
+        </a>
 
-<h1 id="reckoncrafter.github.io">reckoncrafter.github.io</h1>
+        <div class="toolbar">
+            <div class="toolbar_button" id="start_button">Start</div>
+            <div class="clock"></div>
+        </div>
 
-<p>Hello. Welcome to my github.io</p>
+        <div id="start_menu">
+            <p>Nothing to see here yet!</p>
+        </div>
 
-<p>Here you can see view the works that I have decided to publish.</p>
 
-<p>Currently there is just one:</p>
+        <div class="window" id="w_about_me" >
+            <div class="top_decor">
+                <div class="inset">
+                    <span class="title">About Me</span>
+                    <button class="window_close"><span>&times;</span></button>
+                </div>
+            </div>
+            <div class="window_body">
+                <div id="about_me_text">
+                <h1>Hello!</h1>
+                <p>My name is <strong>Dawson Finklea</strong> and I am a Linux System Administrator, Programmer, and IP Network Technician.</p>
+                <p>I am a recent graduate of the University of North Texas, where I earned my Bachelor's of Science in Computer Science.</p>
+                
+                <h2>Background</h2>
+                <p>
+                    I am originally from Houston and Galveston, Texas. From an early age I remember having a passion for computers.
+                    When I was in elementary school, my classmates and I were given a creative writing assignment to use the website builder Weebly to
+                    create a website for whatever we wanted. Me and my best friend went about creating a detailed site, advertising ourselves as the "Alpha Team", technicians
+                    who were available, for free, to the entire school faculty, should they need assistance with any technical difficulties.
+                </p>
+                <p>
+                    I suppose my fate was sealed then.
+                </p>
+                <p>
+                    That same year, that same best friend took up <a href="https://en.wikipedia.org/wiki/AppleScript">AppleScript</a>, Apple's scripting language
+                    for their MacOS Automation system. I was encouraged to learn it as well, though I didn't get terribly far, it helped me
+                    develop at an early age that necessary cognitive foundation for programming.
+                </p>
+                <p>
+                    I wasn't always sat in front of a computer though. Perhaps one of the strongest through-lines of my childhood was cycling. In 2008, my father founded
+                    <a href="https://chainreactionbikes.org">Chain Reaction Ministries</a>, a volunteer organization based out of our local church at the time, which took in
+                    donated bikes from the Houston community, repaired them, and donated them to homeless shelters and other low-income assistance organizations.
+                    I spent 1 to 2 weekends out of every month working at the church repairing and riding bicycles with my friends, and other volunteers.
+                    Ever since Hurricane Harvey displaced our family in 2017, and our church closed shop a few years later, we haven't been as active, but we still have a workshop,
+                    a trailer, and a handful of bikes waiting to be put to good use.
+                </p>
+                <p>
+                    My father instilled in my his passion for cycling, so I spent a lot of time on the bike trails around Houston, and later on the Seawall in Galveston. I participated
+                    twice in the MS150, a bicycle race from Downtown Houston to Downtown Austin.
+                </p>
+                <h2>Jack of All Trades</h2>
+                <p>
+                    Throughout high school and college, my interests covered many different subjects across computing. I started using Linux regularly at the age of 16, and have since been
+                    something of a homelabber, creating my own cloud storage, music streaming, web hosting, and VPN services. I also must have had nearly 5 different iterations of my personal website,
+                    including this one. As the design of this site might suggest, I have a soft spot for the design language of user interfaces from days past, and frequently incorporate it into my work.
+                </p>
+                <p>
+                    In my sophomore year, I attended Reykjavik University in a study abroad program, and the instruction there was a significant departure from the kind of work I had been doing
+                    at UNT. I recieved some of the best instruction of my college career in the fundamental concepts behind Machine Learning, Cryptography, Networking, and Programming Language Design, 
+                    and Computer Graphics, the knowledge from which I still find incredibly useful and relevant in my career.
+                </p>
+                <p>
+                    In the latter half of my degree, I became interested in alternative home networking solutions after I encountered a number of people in my hometown of Galveston with wireless connectivity
+                    problems. I can't say for sure what the reason was, but I suspect it was because of the nature of the construction of these historic homes. Thick, wooden walls and ceilings do not pass
+                    UHF band radio frequencies well. Many of these older homes, however, had unused phone lines, or coax cabling run throughout the building. I knew that <i>someone</i> must have thought to
+                    use these media to carry ethernet in the past, and sure enough, there were standards like <a href="https://en.wikipedia.org/wiki/Multimedia_over_Coax_Alliance"><b>MoCA</b></a>, or 
+                    <a href="https://en.wikipedia.org/wiki/G.hn"><b>G.hn</b></a>, or even <a href="https://en.wikipedia.org/wiki/HomePlug"><b>HomePlug</b></a> for using the building's power lines.
+                </p>
+                <p>
+                    So far, I've had one successful installation of a HomePlug system for a client in Galveston, and I hope to take advantage of these somewhat overlooked technologies to improve connectivity in places
+                    where Wi-Fi functions poorly, and installing new runs of CAT5 cabling is infeasable.
+                </p>
+                </div>
+            </div>
+            <div class="bottom_decor"></div>
+        </div>
 
-<ul>
-<li><a href="algorithms_study_guide.html">Algorithms Study Guide</a> - Study guide for CSCE 4110, Fall 2024, University of North Texas.</li>
-</ul>
+        <div class="window" id="w_work" >
+            <div class="top_decor">
+                <div class="inset">
+                    <span class="title">Work</span>
+                    <button class="window_close"><span>&times;</span></button>
+                </div>
+            </div>
+            <div class="window_body">
+                <h1>Information Technology Experience<h1>
+                <h3><strong>Faust Haus</strong>, Galveston, TX — <i>Home and Office IT Contractor</i>
+                <h4>AUGUST 2021 - PRESENT</h4>
+                <ul>
+                    <li>Provided on-demand IT support for home and small office environments, including network setup, troubleshooting, and security configuration.</li>
+                    <li>Installed, configured, and maintained wired and wireless networks, including routers, switches, modems, and access points.</li>
+                    <li>Diagnosed and repaired hardware and software issues for desktops, laptops, printers, and other office equipment.</li>
+                    <li>Maintained and updated the company website and online services, including domain management, hosting, email configuration, and basic SEO practices.</li>
+                    <li>Ensured compliance with basic cybersecurity protocols and advised on improvements in IT policy and usage.</li>
+                </ul>
+    
+                <h3><b>Mansard House</b>, Galveston, TX - <i>Network Installation Technician (Contract)</i></h3>
+                <h4>AUGUST 2024</h4>
+                <ul>
+                    <li>Installed and configured multiple WiFi access points across a large hotel property to improve guest and operational wireless coverage.</li>
+                    <li>Ran and terminated new CAT5e Ethernet cabling to support access point deployment, including routing through ceilings and walls.</li>
+                    <li>Mounted and positioned access points for optimal signal distribution and minimal interference.</li>
+                    <li>Worked with access points from multiple vendors (e.g., Ubiquiti, TP-Link, Cisco) and configured SSIDs, security protocols, and VLANs as needed.</li>
+                    <li>Conducted signal strength and coverage testing using WiFi analyzer tools to ensure consistent performance throughout the facility.</li>
+                    <li>Collaborated with hotel IT and management staff to minimize disruption to operations during installation.</li>
+                </ul>
+    
+                <h3><b>The Byran Museum</b>, Galveston, TX - <i>IT Technician (Contract)</i>
+                <h4>JUNE 2020 - JUNE 2022</h4>
+                <ul>
+                    <li>Created detailed documentation of the museum interactive exhibit kiosk system</li>
+                    <li>Updated and rewrote DCHP and static IP assignments to allow for additional kiosks to be easily added, and maintain a reasonable order.</li>
+                    <li>Collaborated with museum staff to translate and implement Spanish versions of existing exhibit articles.</li>
+                    <li>Performed network administration and system administration duties on an as-needed basis</li>
+                </ul>
+    
+                <h1>Other Experience</h1>
+                <h3><b>Carbon Environmental</b>, Fort Worth, TX - <i>Fuel Systems Technician</i>
+                <h4>MAY 2021 - JULY 2021</h4>
+                <ul>
+                    <li>Installed, maintained, and repaired fuel delivery systems at gas stations and industrial refueling sites, ensuring equipment met operational and safety standards.</li>
+                    <li>Laid electrical and data conduit to support pump operations, sensor systems, and fuel monitoring equipment.</li>
+                    <li>Disassembled, serviced, and reassembled fuel dispensers and underground storage tank components including spill buckets, overfill prevention valves, and piping</li>
+                    <li>Collaborated with a team of technicians to coordinate site work, troubleshoot system issues, and deliver efficient project execution.</li>
+                    <li>Performed system leak detection tests and ensured proper containment and grounding of fuel systems.</li>
+                </ul>
+    
+                <h3><b>The Kava Bar</b>, Denton, TX - <i>Barback</i>
+                <h4>FEBRUARY 2023 - JUNE 2024</h4>
+                <ul>
+                    <li>Supported bartenders by stocking and replenishing bar supplies, ensuring efficient service</li>
+                    <li>Maintained cleanliness and organization of bar area, including restocking glassware, utensils, and napkins</li>
+                    <li>Provided exceptional customer service by promptly fulfilling drink orders and addressing customer inquiries or concerns</li>
+                    <li>Followed all safety protocols regarding handling of hazardous materials such as cleaning agents or broken glassware</li>
+                </ul>
+    
+            </div>
+            <div class="bottom_decor"></div>
+        </div>
+
+        <div class="window" id="w_blog" >
+            <div class="top_decor">
+                <div class="inset">
+                    <span class="title">Blog</span>
+                    <button class="window_close"><span>&times;</span></button>
+                </div>
+            </div>
+            <div class="file_browser">
+                <a href="blog/legacy_home_networking.html">
+                <div class="icon">
+                    <img src="ico/Web-Document.ico">
+                    <span>An Investigation of Legacy Home Networking</span>
+                </div>
+                </a>
+            </div>
+            <div class="bottom_decor"></div>
+        </div>
+
+        <div class="window" id="w_skills">
+            <div class="top_decor">
+                <div class="inset">
+                    <span class="title">Skills</span>
+                    <button class="window_close"><span>&times;</span></button>
+                </div>
+            </div>
+            <div class="window_body">
+                <strong>Here is a brief list of my strongest skills in Computer Science</strong>
+                <br>
+                <h2>Programming Languages</h2>
+                <ul>
+                    <li>Julia <img class="pl_icon" src="svg/Julia.svg"></li>
+                    <li>JavaScript <img class="pl_icon" src="svg/JS.svg"></li>
+                    <li>C++<img class="pl_icon" src="svg/CPlusPlus.svg"></li>
+                    <li>C#<img class="pl_icon" src="svg/CSharp.svg"></li>
+                    <li>Python<img class="pl_icon" src="svg/Python.svg"></li>
+                    <li>Lua<img class="pl_icon" src="svg/Lua.svg"></li>
+                </ul>
+                <h2>Network Services</h2>
+                <ul>
+                    <li>TCP/UDP/IP</li>
+                    <li>Domain Name System</li>
+                    <li>Internet Message Access Protocol</li>
+                    <li>Microsoft 365 / Exchange</li>
+                    <li>Microsoft Active Directory</li>
+                    <li>Virtual Private Networks</li>
+                    <li>Red Hat Enterprise Linux</li>
+                    <li>Container-based Software Deployment</li>
+                </ul>
+                <h2>Development</h2>
+                <ul>
+                    <li>Full Stack Web Development</li>
+                    <li>Dotnet Application Development</li>
+                    <li>Android Development</li>
+                    <li>Scripting and Automation</li>
+                </ul>
+            </div>
+            <div class="bottom_decor"></div>
+        </div>
+
+        <div class="window" id="w_msdos" style="width:700px;height:450px;max-width:90%;">
+            <div class="top_decor">
+                <div class="inset">
+                    <span class="title">MS-DOS</span>
+                    <button class="window_close"><span>&times;</span></button>
+                </div>
+            </div>
+            <!-- <iframe class="emulator_window" height="100%" width="100%" src="/v86/freedos.html"></iframe> -->
+            <div class="bottom_decor">
+                <span>Thank you to the <a href="https://copy.sh/v86/">v86 Project</a> for this wonderful WebAssembly emulator!</span>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script src="/jquery-3.71.js"></script>
+<script>
+    all_windows = "#w_about_me,#w_work,#w_blog,#w_skills,#w_msdos";
+    all_icons = "#i_about_me,#i_work,#i_blog,#i_skills,#i_msdos";
+    msdos_booted = false;
+
+    function open_window(event)
+    {
+        $(all_windows).hide();
+        $("#" + $(event.currentTarget).attr("win")).show();
+
+        if($(event.currentTarget).is($("#i_msdos")) && !msdos_booted){
+            msdos_booted = true;
+            console.log("booting msdos...");
+            msdos_element = $('<iframe class="emulator_window" height="100%" width="100%" src="/v86/freedos.html"></iframe>');
+            $("#w_msdos").append(msdos_element);
+        }
+    }
+
+    function close_window(event)
+    {
+        $(event.currentTarget).parents(".window").hide();
+    }
+
+    $(all_windows).hide();
+    $(all_icons).click(open_window);
+    $(all_windows).find(".window_close").click(close_window);
+
+    var clock = $(".clock");
+    setInterval(()=>{
+        const now = new Date();
+        clock.text(now.toLocaleTimeString());
+    }, 1000);
+
+    $("#start_menu").hide();
+    $("#start_button").click(()=>{$("#start_menu").toggle()});
+
+
+</script>
+
+</body>
+</html>

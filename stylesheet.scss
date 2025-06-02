@@ -1,0 +1,322 @@
+$toolbar_hgt: 2.2em;
+$wingrey: #c0c0c0;
+$windarkgrey: #7f7f7f;
+$toolbar_hgt: 2.2em;
+$decor_height: 2em;
+
+@font-face {
+    font-family: Pixel Arial;
+    src: url("/PIXEARG_.TTF");
+}
+@font-face {
+    font-family: Pixel Arial;
+    font-weight: bold;
+    src: url("/PIXEAB__.TTF");
+}
+@mixin emboss($thick){
+    border-right: $thick solid #000000;
+    border-bottom: $thick solid #000000;
+    border-top: $thick solid #ffffff;
+    border-left: $thick solid #ffffff;
+}
+@mixin deboss($thick){
+    border-top: 4px solid #000000;
+    border-left: 4px solid #000000;
+    border-bottom: 4px solid #ffffff;
+    border-right: 4px solid #ffffff;
+}
+
+:root{
+    font-family:'Pixel Arial', 'Courier New', Courier, monospace;
+}
+
+.blog_body{
+    background-color: $windarkgrey;
+    color:black;
+    font-family: 'Pixel Arial', sans-serif;
+    max-width: 80em;
+    margin:auto;
+}
+
+.desktop{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, 7.0em);
+    grid-template-rows: repeat(auto-fill, 7.0em);
+    grid-auto-flow: column;
+  
+    justify-content: space-around;
+    align-content: space-around;
+  
+    position: fixed;
+    top: 0;
+    left: 0;
+  
+    height:calc(100% - #{$toolbar_hgt} );
+    width:100%;
+  
+    background-color: #008080;
+    color: white;
+}
+
+#start_menu{
+    display: block;
+    position: fixed;
+    bottom:1.8em;
+    left:0;
+    height:24em;
+    width:18em;
+    background-color: $wingrey;
+    color:black;
+    z-index: 2;
+    @include emboss(2px);
+}
+
+#about_me_text{
+    max-width: 60em;
+    width: 95%;
+    margin: auto;
+}
+
+.icon {
+    padding: 0.75rem;
+    flex-basis: 6rem;
+    align-self: flex-start;
+
+    aspect-ratio: 1 / 1;
+
+    display:flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    span{
+      pointer-events: none;
+    }
+    img{
+        padding-bottom: .4em;
+        height:4em;
+        pointer-events: none;
+    }
+
+}
+.icon:hover{
+  border: 1px solid grey;
+}
+
+.file_browser{
+    background-color: white;
+    @include deboss(2px);
+
+    width: 98%;
+    height: 98%;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, 7.0em);
+    grid-template-rows: repeat(auto-fill, 7.0em);
+    grid-auto-flow: row;
+    gap: .5em;
+  
+    justify-content: space-around;
+    align-content: left;
+
+    position: absolute;
+
+    font-family: 'Pixel Arial';
+}
+
+.toolbar_note{
+    color: #006565;
+    font-family: Pixel Arial;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0.4em;
+    left: 7.3em;
+}
+
+.toolbar{
+    z-index: 3;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $toolbar_hgt;
+    background-color: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    padding-left:.2em;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  
+    .clock{
+      position: absolute;
+      color: black;
+      right: .5em;
+      padding: .2em;
+  
+      border-top: 2px solid #000000;
+      border-left: 2px solid #000000;
+      border-right: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+    }
+}
+.pl_icon{
+    display: inline;
+    height:1.5em;
+}
+.toolbar_button{
+    min-width: 3em;
+    height: 85%;
+    
+    background-color: #c0c0c0;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+
+    color:black;
+    font-weight: bold;
+  
+    padding-left:1.5em;
+    padding-right:1.5em;
+  
+    display:flex;
+    align-items: center;
+
+}
+.toolbar_button:active{
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #000;
+    border-top: 2px solid #000;
+}
+
+.window{
+    position: absolute;
+    z-index: 1;
+    width: 80%;
+    height: 45em;
+
+    max-height: 90%;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @include emboss(4px);
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    overflow: hidden;
+
+    .top_decor{
+        height: $decor_height;
+        background-color: $wingrey;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        display: block;
+
+        .inset{
+            background-color: $windarkgrey;
+            position: absolute;
+            display: block;
+            height: calc(100% - 6px);
+            width: 100%;
+            top: 1px;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+        .window_close{
+            position: absolute;
+            right:4px;
+            top: 1px;
+            border: 1px solid black;
+
+            font-size: 2em;
+            height: 0.7em;
+            width: 1.0em;
+            
+
+            margin: 0;
+            @include emboss(2px);
+
+            span{
+                position: absolute;
+                top: -65%;
+                left: 16%;
+            }
+        }
+        .title{
+            color: $wingrey;
+            font-size: 0.8em;
+            font-family: Pixel Arial;
+            position: absolute;
+            left: 2.5em;
+            transform: translate(0, 20%);
+            font-weight: bold;
+        }
+        .window_icon{
+            height:95%;
+            position: absolute;
+            left: 0.1em;
+        }
+    }
+    .bottom_decor{
+        font-family: Pixel Arial;
+        color:$windarkgrey;
+        border-top: 2px solid white;
+        height: $decor_height;
+        background-color: $wingrey;
+        width: 100%;
+        position:absolute;
+        bottom:0;
+        span{
+            font-size: 0.5em;
+        }
+    }
+    .window_body{
+        background-color: $wingrey;
+        color: black;
+        font-family: Pixel Arial;
+        position: absolute;
+        top: $decor_height;
+        max-width: 100%;
+        width: 100%;
+        height: calc(100% - 2 * #{$decor_height});
+        overflow-x: scroll;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        font-size: 0.8em;
+    }
+}
+.file_browser{
+    background-color: white;
+    @include deboss(2px);
+
+    width: 100%;
+    height: calc(100% - 2 * #{$decor_height});
+    top: $decor_height;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, 7.0em);
+    grid-template-rows: repeat(auto-fill, 7.0em);
+    grid-auto-flow: row;
+    gap: .5em;
+  
+    justify-content: space-around;
+    align-content: left;
+
+    position: absolute;
+
+    font-family: 'Pixel Arial';
+    .icon{
+        color:black;
+    }
+}
+.emulator_window{
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    height: calc(100% - 2 * #{$decor_height});
+    top: $decor_height;
+}
