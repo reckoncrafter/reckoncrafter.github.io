@@ -13,7 +13,8 @@
   color: black;
   font-family: 'Pixel Arial', sans-serif;
   max-width: 80em;
-  margin: auto; }
+  margin: auto;
+  width: 90%; }
 
 .desktop {
   display: grid;

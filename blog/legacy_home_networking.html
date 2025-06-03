@@ -7,7 +7,7 @@
     <title>An Investigation of Legacy Home Networking Standards</title>
 </head>
 <body class="blog_body">
-    <h1>An Investigation of Legacy Home Networking</h1>rr
+    <h1>An Investigation of Legacy Home Networking</h1>
     <p>
         For the past century, people have let phone companies and cable television providers run new cables throughout
         their homes, and new construction will often include coax and phone lines by default. However, you rarely
@@ -39,5 +39,36 @@
         Here I cover some of these technologies, where they may be useful for a given application, and what considerations
         to make if you intend on using any of them.
     </p>
+    <hr>
+    <h1>Powerline</h1>
+    <p>I imagine that powerline ethernet adapters are the most well known out of this class of devices.</p>
+    <p>
+        The principle they operate on is simple. Powerlines normally carry only a 60Hz sine wave, with 120v potential to ground.
+        A powerline ethernet adapter will impose an additional signal at a much higher frequency (4.5MHz to 21MHz), on those copper lines,
+        and listen for signals of that frequency range coming from other devices. These signals are at such a low power level compared to AC
+        power, that they have no impact on other devices plugged into other outlets.
+    </p>
+    <p>There is a catch, however.</p>
+    <p>
+        Powerlines are typically unshielded. They don't really need to be; no transmitted signal is going to be powerful enough to
+        significantly affect the AC waveform. This is a problem for us, however, because signals picked up by the lines in our frequency range
+        could very well interfere with our signal, slowing down transmission rates, or even stomp it out completely.
+    </p>
+    <p>
+        If you're lucky enough to live in a home where the wiring must be run through metal conduit, like those in Chicago, Illinois, your powerlines
+        are ideal for this application, as metal conduit may largely shield the lines from electromagnetic interference.
+    </p>
+    <p>
+        Other homes with thin interior and exterior walls, with only unshielded Romex running through the walls, may not fare nearly as well.
+    </p>
+    <h3>Further Reading</h3>
+    <ul>
+        <li><a href="https://www.pcmag.com/encyclopedia/term/homeplug">www.pcmag.com/encyclopedia/term/homeplug</a></li>
+        <li><a href="https://hardwarebee.com/understanding-power-line-communication/">hardwarebee.com/understanding-power-line-communication/</a></li>
+    </ul>
+
+    <h1>Coaxial</h1>
+    <p>The primary standard for ethernet over coaxial cables is MoCA, for "<b>M</b>ultimedia over <b>C</b>oax <b>A</b>lliance".</p>
+    <p>Originally developed for distributing IP Television, MoCA is now a general-purpose ethernet link</p>
 </body>
 </html>
