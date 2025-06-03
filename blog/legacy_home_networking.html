@@ -63,12 +63,72 @@
     </p>
     <h3>Further Reading</h3>
     <ul>
-        <li><a href="https://www.pcmag.com/encyclopedia/term/homeplug">www.pcmag.com/encyclopedia/term/homeplug</a></li>
-        <li><a href="https://hardwarebee.com/understanding-power-line-communication/">hardwarebee.com/understanding-power-line-communication/</a></li>
+        <li><a href="https://www.pcmag.com/encyclopedia/term/homeplug">Homeplug - PCMag</a></li>
+        <li><a href="https://hardwarebee.com/understanding-power-line-communication/">Understanding Powerline Communication - Hardwarebee</a></li>
     </ul>
 
     <h1>Coaxial</h1>
     <p>The primary standard for ethernet over coaxial cables is MoCA, for "<b>M</b>ultimedia over <b>C</b>oax <b>A</b>lliance".</p>
     <p>Originally developed for distributing IP Television, MoCA is now a general-purpose ethernet link</p>
+    <p>
+        You're probably already familiar with broadband service delievered over the coaxial cables originally installed to serve cable
+        television. This is the same cable, and the same standard, that MoCA uses. The only difference is that MoCA uses a different
+        frequency range than the one used by cable television, so that the two signals can coexist on the same cable.
+    </p>
+    <p>
+        Because all coaxial cables are connected at a common point, it can be used to create a wired LAN in a home without running new cables.
+    </p>
+    <p>
+        The modern MoCA standard is capable of speeds up to 2.5Gbps, so while not as fast as a dedicated CAT6 run, it is still
+        more than sufficient for most home applications.
+    </p>
+    <p>
+        By and large, using coaxial cables is preferred to using powerlines, as coaxial cables are shielded, and will not suffer from
+        the same electromagnetic interference that powerlines do. While some powerline adapters are technically capable of
+        speeds up to 2.5Gbps, they intereference they are subject to will often result in much lower speeds, closer to 500Mbps or lower.
+    </p>
+    <h2>Further Reading</h2>
+    <ul>
+        <li><a href="https://en.wikipedia.org/wiki/Multimedia_over_Coax_Alliance">Multimedia over Coax Alliance - Wikipedia</a></li>
+        <li><a href="https://www.truecable.com/blogs/cable-academy/moca-vs-ethernet">MoCA vs. Ethernet - Truecable</a></li>
+    </ul>
+
+    <h1>Phone Lines</h1>
+    <p>
+        Fewer and fewer people are holding onto their landlines, but many homes still have phone lines running through them.
+        These lines are typically unshielded twisted pair (UTP) cables, and are capable of carrying ethernet signals. However,
+        the maximum speed you can expect from these lines is 100Mbps, which is the same as Fast Ethernet.
+    </p>
+    <p>
+        This is because the phone lines are designed to carry voice signals, which are much lower frequency than the signals used by
+        modern ethernet standards. The maximum frequency that can be used over these lines is 31.25MHz, which is the same as
+        Fast Ethernet (100BASE-TX). This is why the lines are unshielded, as the low frequency, analog signals, can suffer much more
+        interference before it becomes unintelligible.
+    </p>
+    <p>
+        There are two options for using phone lines for ethernet: modified phone lines, or G.hn. The existing phone lines use 6P4C connectors,
+        which are not compatible with standard 8P8C connectors used by ethernet. You can either modify the phone lines to use 8P8C connectors,
+        or use a G.hn adapter, which can use the existing phone lines without modification. If you choose to modify the phone lines,
+        you will need to ensure that the lines are not connected to any active phone service, and take steps to prevent issues like
+        signal reflections and crosstalk.
+    </p>
+
+    <h2>Further Reading</h2>
+    <ul>
+        <li><a href="https://www.youtube.com/watch?v=i8XBR8Ftftg">How to reuse a telephone line as an ethernet jack! - YouTube</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/G.hn/">G.hn - Wikipedia</a></li>
+    </ul>
+
+    <h1>Conclusion</h1>
+    <p>
+        While Wi-Fi is the most convenient way to connect devices in a home network, it is not always the best option.
+        Powerline, coaxial, and phone lines can all be used to create a wired LAN in a home without running new cables,
+        but each has its own limitations and considerations.
+    </p>
+    <p>
+        There are other technologies that can be used to improve home networking, like Wi-Fi over Coaxial, which helps propagate existing Wi-Fi signals by
+        effectively turning coaxial cables into Wi-Fi antennas, or plastic optical fiber, which uses cables like TOSLINK to create a high-speed, low-latency network
+        over short distances. The G.hn set of standards covers pretty much all conductors you might find in a home, so you're unlikely to find a cable that can't be used for some form of networking.
+    </p>
 </body>
 </html>
