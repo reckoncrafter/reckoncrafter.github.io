@@ -4,62 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dawson "Asa" Finklea</title>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="/jquery-ui.css">
+    <link rel="stylesheet" href="/stylesheet.css">
 </head>
 <body>
     <div id="desktop">
-        <div class="icon" id="i_about_me" win="w_about_me">
+        <div class="icon" _bind="about_me">
             <img src="ico/User.ico">
             <span>About Me</span>
         </div>
-        <div class="icon" id="i_work" win="w_work">
+        <div class="icon" _bind="work">
             <img src="ico/Briefcase.ico">
             <span>Work</span>
         </div>
-        <div class="icon" id="i_blog" win="w_blog">
+        <div class="icon" _bind="blog">
             <img src="ico/Newspaper (yellow 3D).ico">
             <span>Blog</span>
         </div>
-        <div class="icon" id="i_skills" win="w_skills">
+        <div class="icon" _bind="skills">
             <img src="ico/Book 2.ico">
             <span>Skills</span>
         </div>
-        <div class="icon" id="i_msdos" win="w_msdos">
+        <div class="icon" _bind="msdos">
             <img src="ico/MS-DOS logo.ico">
             <span>MS-DOS</span>
         </div>
         <a href="https://www.github.com/reckoncrafter/vrblocks" target="_blank" style="text-decoration: none; color:white;">
-        <div class="icon" id="i_github" win="w_github">
+        <div class="icon" _bind="github">
             <img src="ico/Turtle.ico">
             <span>VRBlocks</span>
         </div>
         </a>
         <a href="https://www.linkedin.com/in/dawson-finklea-9100651b8/" target="_blank" style="text-decoration: none; color:white;">
-        <div class="icon" id="i_linkedin" win="w_linkedin">
+        <div class="icon" _bind="linkedin">
             <img src="ico/LinkedIn.ico">
             <span>LinkedIn</span>
         </div>
         </a>
         <a href="/dawson_finklea_resume.pdf" target="_blank" style="text-decoration: none; color:white;">
-        <div class="icon" id="i_resume" win="w_resume">
+        <div class="icon" _bind="resume">
             <img src="ico/User documents.ico">
             <span>R&eacute;sum&eacute;</span>
         </div>
         </a>
 
 
-        <div class="toolbar">
+        <div id="toolbar">
             <div class="toolbar_button" id="start_button">Start</div>
+
+            <div class="toolbar_button win_btn" _bind="about_me"><img src="ico/User.ico">About Me</div>
+            <div class="toolbar_button win_btn" _bind="work"><img src="ico/Briefcase.ico">Work</div>
+            <div class="toolbar_button win_btn" _bind="blog"><img src="ico/Newspaper (yellow 3D).ico">Blog</div>
+            <div class="toolbar_button win_btn" _bind="skills"><img src="ico/Book 2.ico">Skills</div>
+            <div class="toolbar_button win_btn" _bind="msdos"><img src="ico/MS-DOS logo.ico">MS-DOS</div>
+
             <div class="clock"></div>
         </div>
+        <div id="hidden_toolbar_buttons" style="visibility: hidden;"></div>
 
         <div id="start_menu">
             <p>Nothing to see here yet!</p>
         </div>
 
+        <div id="closed_windows" style="visibility: hidden;"></div>
 
-        <div class="window" id="w_about_me" >
+        <div class="window" _bind="about_me" id="w_about_me" >
             <div class="top_decor">
                 <div class="inset">
                     <span class="title">About Me</span>
@@ -126,7 +135,7 @@
             <div class="bottom_decor"></div>
         </div>
 
-        <div class="window" id="w_work" >
+        <div class="window" _bind="work" id="w_work" >
             <div class="top_decor">
                 <div class="inset">
                     <span class="title">Work</span>
@@ -193,7 +202,7 @@
             <div class="bottom_decor"></div>
         </div>
 
-        <div class="window" id="w_blog" >
+        <div class="window" _bind="blog" id="w_blog" >
             <div class="top_decor">
                 <div class="inset">
                     <span class="title">Blog</span>
@@ -211,7 +220,7 @@
             <div class="bottom_decor"></div>
         </div>
 
-        <div class="window" id="w_skills">
+        <div class="window" _bind="skills" id="w_skills">
             <div class="top_decor">
                 <div class="inset">
                     <span class="title">Skills</span>
@@ -252,7 +261,7 @@
             <div class="bottom_decor"></div>
         </div>
 
-        <div class="window" id="w_msdos" style="width:700px;height:450px;max-width:90%;">
+        <div class="window" _bind="msdos" id="w_msdos" style="width:700px;height:450px;max-width:90%;">
             <div class="top_decor">
                 <div class="inset">
                     <span class="title">MS-DOS</span>
@@ -272,43 +281,54 @@
 <script src="/jquery-3.71.js"></script>
 <script src="/jquery-ui.js"></script>
 <script>
-    all_windows = "#w_about_me,#w_work,#w_blog,#w_skills,#w_msdos";
-    all_icons = "#i_about_me,#i_work,#i_blog,#i_skills,#i_msdos";
+    all = "about_me"
     msdos_booted = false;
 
     $( function(){
-        $(all_windows).draggable({containment: $("#desktop"), handle: $(".top_decor")});
-        $(all_windows).addClass("ui-widget-content");
-        $(all_windows).resizable({containment: $("#desktop")});
+        $(".window").draggable({containment: $("#desktop"), handle: $(".top_decor")});
+        $(".window").addClass("ui-widget-content");
+        $(".window").resizable({containment: $("#desktop")});
 
-        $(all_windows).position({
+        $(".window").position({
             my: "center",
             at: "center",
             of: $("#desktop")
         });
     });
 
-    function open_window(event)
-    {
-        //$(all_windows).hide();
-        $("#" + $(event.currentTarget).attr("win")).show();
-
-        if($(event.currentTarget).is($("#i_msdos")) && !msdos_booted){
-            msdos_booted = true;
-            console.log("booting msdos...");
-            msdos_element = $('<iframe class="emulator_window" height="100%" width="100%" src="/v86/freedos.html"></iframe>');
-            $("#w_msdos").append(msdos_element);
+    function open_window(event){
+        bind = $(event.currentTarget).attr("_bind");
+        win = $(".window").filter(`[_bind="${bind}"]`);
+        win_btn = $(".win_btn").filter(`[_bind="${bind}"]`);
+        win.appendTo("#desktop");
+        
+        if(!$("#toolbar").has(win_btn).length){
+            win_btn.appendTo("#toolbar");
         }
     }
 
-    function close_window(event)
-    {
-        $(event.currentTarget).parents(".window").hide();
+    function boot_v86(){
+        if(!msdos_booted){
+            msdos_booted = true;
+            console.log("booting msdos...");
+            msdos_element = $('<iframe class="emulator_window" height="100%" width="100%" src="/v86/freedos.html"></iframe>');
+            $(".window").filter("[_bind='msdos']").append(msdos_element);
+        }
     }
 
-    $(all_windows).hide();
-    $(all_icons).click(open_window);
-    $(all_windows).find(".window_close").click(close_window);
+    function close_window(event){
+        win = $(event.currentTarget).parents(".window");
+        win.appendTo("#closed_windows");
+        $(".win_btn").filter(`[_bind=${win.attr("_bind")}]`).appendTo("#hidden_toolbar_buttons");
+    }
+
+    $(".window").appendTo("#closed_windows");
+    $(".window").on("mousedown", (ev)=>{$(ev.currentTarget).appendTo("#desktop")});
+    $(".win_btn").appendTo("#hidden_toolbar_buttons");
+    $(".win_btn").click(open_window);
+    $(".icon").click(open_window);
+    $(".icon").filter("[_bind='msdos']").click(boot_v86);
+    $(".window").find(".window_close").click(close_window);
 
     var clock = $(".clock");
     setInterval(()=>{

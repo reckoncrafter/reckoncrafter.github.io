@@ -134,7 +134,7 @@ $decor_height: 2em;
     left: 7.3em;
 }
 
-.toolbar{
+#toolbar{
     z-index: 3;
     position: fixed;
     bottom: 0;
@@ -184,8 +184,14 @@ $decor_height: 2em;
     display:flex;
     align-items: center;
 
+    img{
+        display: inline;
+        margin-right: 0.5em;
+    }
+
 }
 .toolbar_button:active{
+    background-color: $windarkgrey;
     border-right: 2px solid #fff;
     border-bottom: 2px solid #fff;
     border-left: 2px solid #000;
