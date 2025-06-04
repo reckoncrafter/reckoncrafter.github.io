@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dawson "Asa" Finklea</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-    <div class="desktop">
+    <div id="desktop">
         <div class="icon" id="i_about_me" win="w_about_me">
             <img src="ico/User.ico">
             <span>About Me</span>
@@ -269,14 +270,27 @@
 </div>
 
 <script src="/jquery-3.71.js"></script>
+<script src="/jquery-ui.js"></script>
 <script>
     all_windows = "#w_about_me,#w_work,#w_blog,#w_skills,#w_msdos";
     all_icons = "#i_about_me,#i_work,#i_blog,#i_skills,#i_msdos";
     msdos_booted = false;
 
+    $( function(){
+        $(all_windows).draggable({containment: $("#desktop"), handle: $(".top_decor")});
+        $(all_windows).addClass("ui-widget-content");
+        $(all_windows).resizable({containment: $("#desktop")});
+
+        $(all_windows).position({
+            my: "center",
+            at: "center",
+            of: $("#desktop")
+        });
+    });
+
     function open_window(event)
     {
-        $(all_windows).hide();
+        //$(all_windows).hide();
         $("#" + $(event.currentTarget).attr("win")).show();
 
         if($(event.currentTarget).is($("#i_msdos")) && !msdos_booted){

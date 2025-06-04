@@ -16,7 +16,7 @@
   margin: auto;
   width: 90%; }
 
-.desktop {
+#desktop {
   display: grid;
   grid-template-columns: repeat(auto-fill, 7em);
   grid-template-rows: repeat(auto-fill, 7em);
@@ -151,9 +151,9 @@
   width: 80%;
   height: 45em;
   max-height: 90%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
   border-right: 4px solid #000000;
   border-bottom: 4px solid #000000;
   border-top: 4px solid #ffffff;
