@@ -59,6 +59,17 @@ $decor_height: 2em;
     color: white;
 }
 
+#background_text{
+    color: #005252;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    font-size: 24pt;
+    text-align: center;
+}
+
 #start_menu{
     display: block;
     position: fixed;
@@ -259,6 +270,9 @@ $decor_height: 2em;
                 top: -65%;
                 left: 16%;
             }
+        }
+        .window_close:active{
+            @include deboss(2px);
         }
         .title{
             color: $wingrey;

@@ -31,6 +31,16 @@
   background-color: #008080;
   color: white; }
 
+#background_text {
+  color: #005252;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  font-size: 24pt;
+  text-align: center; }
+
 #start_menu {
   display: block;
   position: fixed;
@@ -203,6 +213,11 @@
         position: absolute;
         top: -65%;
         left: 16%; }
+    .window .top_decor .window_close:active {
+      border-top: 4px solid #000000;
+      border-left: 4px solid #000000;
+      border-bottom: 4px solid #ffffff;
+      border-right: 4px solid #ffffff; }
     .window .top_decor .title {
       color: #c0c0c0;
       font-size: 0.8em;
