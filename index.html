@@ -30,19 +30,19 @@
             <span>MS-DOS</span>
         </div>
         <a href="https://www.github.com/reckoncrafter/vrblocks" target="_blank" style="text-decoration: none; color:white;">
-        <div class="icon" _bind="github">
+        <div class="icon extern" _bind="github">
             <img src="ico/Turtle.ico">
             <span>VRBlocks</span>
         </div>
         </a>
         <a href="https://www.linkedin.com/in/dawson-finklea-9100651b8/" target="_blank" style="text-decoration: none; color:white;">
-        <div class="icon" _bind="linkedin">
+        <div class="icon extern" _bind="linkedin">
             <img src="ico/LinkedIn.ico">
             <span>LinkedIn</span>
         </div>
         </a>
         <a href="/dawson_finklea_resume.pdf" target="_blank" style="text-decoration: none; color:white;">
-        <div class="icon" _bind="resume">
+        <div class="icon extern" _bind="resume">
             <img src="ico/User documents.ico">
             <span>R&eacute;sum&eacute;</span>
         </div>
@@ -286,7 +286,6 @@
 
     $( function(){
         $(".window").draggable({containment: $("#desktop"), handle: $(".top_decor")});
-        $(".window").addClass("ui-widget-content");
         $(".window").resizable({containment: $("#desktop")});
 
         $(".window").position({
@@ -338,6 +337,8 @@
 
     $("#start_menu").hide();
     $("#start_button").click(()=>{$("#start_menu").toggle()});
+
+    $(".extern").append(`<img src="/ico/shortcut_overlay.png" class="shortcut_icon">`);
 
 
 </script>

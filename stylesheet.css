@@ -68,6 +68,12 @@
     height: 4em;
     pointer-events: none; }
 
+.shortcut_icon {
+  position: relative;
+  left: -1.0em;
+  bottom: 5.5em;
+  scale: 0.8; }
+
 .icon:hover {
   border: 1px solid grey; }
 
