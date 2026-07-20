@@ -8,6 +8,34 @@
     <link rel="stylesheet" href="/stylesheet.css">
 </head>
 <body>
+    <div id="start_menu">
+        <div id="start_menu_branding"><span><b>Finklea</b>95</span></div>
+        <div id="start_menu_list">
+            <div class="start_menu_item" _bind="backgrounds">
+                <img src="ico/w98_display_properties.ico">
+                <span>Backgrounds</span>
+                <span class="start_menu_arrow">&#x2023;</span>
+            </div>
+            <div class="start_menu_item" id="start_menu_welcome" _bind="welcome">
+                <img src="ico/w98_tip.ico">
+                <span>Welcome</span>
+            </div>
+            <!-- <a class="start_menu_item" href="mailto:me@dawsonfinklea.com" style="text-decoration: none;color:inherit">
+                <img src="ico/w98_envelope_closed.ico">
+                <span>Contact</span>
+            </a> -->
+        </div>
+
+        <div class="rollover_menu" style="right:-4em;" _bind="backgrounds">
+            <div class="rollover_menu_item" _select="none">Default</div>
+            <div class="rollover_menu_item" _select="thatch2.png">Black Thatch</div>
+            <div class="rollover_menu_item" _select="egypt.png">Carved Stone</div>
+            <div class="rollover_menu_item" _select="bamboo.png">Straw Mat</div>
+            <div class="rollover_menu_item" _select="pyramid2.png">Triangles</div>
+            <div class="rollover_menu_item" _select="halftone.png">Waves</div>
+        </div>
+    </div>
+
     <div id="desktop">
         <!--
         <span id="background_text">
@@ -59,12 +87,36 @@
         </div>
         <div id="hidden_toolbar_buttons" style="visibility: hidden;"></div>
 
-        <div id="start_menu">
-            <div class="start_menu_item">Backgrounds</div>
-            <div class="start_menu_item">Email</div>
-        </div>
-
         <div id="closed_windows" style="visibility: hidden;"></div>
+        <div class="window" id="w_welcome" _bind="welcome">
+            <div class="top_decor">
+                <div class="inset">
+                    <span class="title"><img src="ico/w98_tip.ico">Welcome</span>
+                    <img class="window_close" src="ico/close_window.png">
+                </div>
+            </div>
+            <div class="window_body">
+                <div class="window_body_content">
+                    <p><b>Welcome to my website!</b></p>
+                    <p>Here you can find some Information about me, my work, and some external links to relevant pages.</p>
+                    <p>As an exercise in web design and programming, I designed this webpage to look and feel like a Windows 95 desktop,
+                        including some dynamic styling to make the experience smooth on mobile as well.
+                    </p>
+                    <p>Clicking on the desktop icons will open windows with the relevant information, and the Start Menu button
+                        in the bottom-left corner will open a dialog with some options, and a button to reopen this Welcome window.
+                    </p>
+                    <p>The windows are resizable by clicking and dragging on the edges and corners, and can be moved by dragging from the title bar.<br>
+                        For mobile devices, the windows will be fixed in place at a defined size because of the limited screen real estate.
+                    </p>
+                    <p>Multiple windows can be opened, and clicking on a window, or its tab in the taskbar, will bring it to the front of the stack.</p>
+                    <p>Clicking the "X" button on the top-right corners of windows will close them.</p>
+                    <p>This is a work-in-progress, and I would appreciate feedback. If you have a GitHub account, feel free to open an issue
+                        at the <a href="https://github.com/reckoncrafter/reckoncrafter.github.io">git repository</a> for this static website, if you find any problems.
+                    </p>
+                </div>
+            </div>
+            <div class="bottom_decor"></div>
+        </div>
 
         <div class="window" _bind="about_me" id="w_about_me" >
             <div class="top_decor">
@@ -74,7 +126,7 @@
                 </div>
             </div>
             <div class="window_body">
-                <div id="about_me_text">
+                <div id="about_me_text" class="window_body_content">
                     <p><b>Hello!</b></p>
                     <p>My name is Dawson Finklea, and I am an IT professional with a B.S. in Computer Science.</p>
                     <p>I have been an active developer for personal, academic, and professional projects for almost 5 years,
@@ -204,12 +256,22 @@
     $( function(){
         $(".window").draggable({containment: $("#desktop"), handle: $(".top_decor")});
         $(".window").resizable({containment: $("#desktop")});
+        $(".rollover_menu").hide();
 
         $(".window").position({
             my: "center",
             at: "center",
             of: $("#desktop")
         });
+
+        let bg = localStorage.getItem("background_setting");
+        if(bg != null){
+            let css_str = bg == "none" ? "none" : `url("ico/${bg}")`;
+            $("#desktop").css("background-image", css_str);
+        }
+
+        $(".window").appendTo("#closed_windows");
+        $("#w_welcome").appendTo("#desktop");
     });
 
     function open_window(event){
@@ -226,12 +288,12 @@
         if(!$("#toolbar").has(win_btn).length){
             win_btn.appendTo("#toolbar");
         }
+        $("#start_menu").hide();
     }
 
     function boot_v86(){
         if(!msdos_booted){
             msdos_booted = true;
-            console.log("booting msdos...");
             msdos_element = $('<iframe class="emulator_window" height="100%" width="100%" src="/v86/freedos.html"></iframe>');
             $(".window").filter("[_bind='msdos']").append(msdos_element);
         }
@@ -245,10 +307,22 @@
         window_stack = window_stack.filter((id)=> id != win.id);
     }
 
+    function change_background(event){
+        let selection = $(event.currentTarget).attr("_select");
+        if(selection == undefined) return;
+        if(selection == "none"){
+            $("#desktop").css("background-image", "");
+        }
+        else{
+            let css_str = `url("ico/${selection}")`;
+            $("#desktop").css("background-image", css_str);
+        }
+        localStorage.setItem("background_setting", selection);
+    }
+
 
 
     function bring_window_forward(jquery_window){
-        console.log("Moving window to top");
         if(jquery_window == undefined) return;
 
         let replace = window_stack.filter((id) => id != jquery_window.id);
@@ -261,18 +335,28 @@
         replace.forEach((id, index)=>{
             $('#'+id).css("z-index", 2+index);
         })
-        console.log(replace);
         window_stack = replace;
-        console.log(window_stack);
+        $("#start_menu").hide();
     }
 
-    $(".window").appendTo("#closed_windows");
     $(".window").on("mousedown", (ev)=>{bring_window_forward(ev.currentTarget)});
     $(".win_btn").appendTo("#hidden_toolbar_buttons");
     $(".win_btn").click(open_window);
     $(".icon").click(open_window);
     $(".icon").filter("[_bind='msdos']").click(boot_v86);
     $(".window").find(".window_close").click(close_window);
+    $("#start_menu_welcome").click(open_window)
+
+    $(".start_menu_item").mouseenter((event)=>{
+        let bind = $(event.target).attr("_bind");
+        if(bind == undefined) return;
+        $(".rollover_menu").filter(`[_bind=${bind}]`).show();
+    })
+    $("#start_menu").mouseleave((event)=>{
+        $(".rollover_menu").hide();
+    })
+
+    $(".rollover_menu_item").click(change_background);
 
     var clock = $(".clock");
     setInterval(()=>{

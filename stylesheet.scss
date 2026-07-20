@@ -4,6 +4,7 @@ $windarkgrey: #7f7f7f;
 $winblue : #010080;
 $toolbar_hgt: 2.2em;
 $decor_height: 2em;
+$startmenuwidth: 22em;
 
 @font-face {
     font-family: Pixel Arial;
@@ -56,8 +57,12 @@ $decor_height: 2em;
     height:calc(100% - #{$toolbar_hgt} );
     width:100%;
   
+    background-image: none;
     background-color: #008080;
     color: white;
+
+    background-repeat: repeat;
+    background-position: center;
 }
 
 #background_text{
@@ -73,25 +78,89 @@ $decor_height: 2em;
 
 #start_menu{
     display: grid;
-    grid-template-rows: 3em 3em 3em 3em 3em 3em;
-    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-columns: 3em 1fr;
+    grid-template-areas: "branding list";
 
-    position: fixed;
-    bottom:1.8em;
+    position: absolute;
+    bottom:2.4em;
     left:0;
     height:24em;
-    width:18em;
+    width: $startmenuwidth;
     background-color: $wingrey;
     color:black;
     z-index: 2;
     @include emboss(2px);
 
-    .start_menu_item{
-        display: flex;
-        height: 100%;
-        width: 97%;
-        padding: .2em;
-        align-items: center;
+    #start_menu_branding{
+        grid-area: branding;
+        background-color: $windarkgrey;
+        span{
+            position: absolute;
+            left: -2.6em;
+            bottom: 3em;
+            color: #c0c0c0;
+            transform: rotate(-90deg);
+            /* font-weight: bold; */
+            font-size: 2em;
+        }
+    }
+
+    #start_menu_list{
+        grid-area: list;
+        display: grid;
+        grid-template-rows: 3em 3em;
+        grid-template-columns: 1fr;
+
+        .start_menu_item{
+            display: flex;
+            gap: 8px;
+            margin-left:0.5em;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            width: 97%;
+            padding: .2em;
+            align-items: center;
+
+            img{
+                height: 80%;
+            }
+        }
+        .start_menu_item:hover{
+            background-color: $winblue;
+            color: white;
+        }
+        .start_menu_arrow{
+            font-size: 2.5em;
+            transform: translate(0, -10%);
+            margin-left: auto;
+        }
+    }
+}
+
+.rollover_menu{
+    position: absolute;
+    left: $startmenuwidth;
+    padding: 0.2em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex-basis: 1em;
+    width: 10em;
+    background-color: $wingrey;
+
+    @media screen and (max-width: 667px){
+        left: $startmenuwidth - 10em;
+    }
+
+    @include emboss(2px);
+    .rollover_menu_item{
+        align-self: flex-start;
+        width: 100%;
+    }
+    .rollover_menu_item:hover{
+        background-color: $winblue;
+        color: white;
     }
 }
 

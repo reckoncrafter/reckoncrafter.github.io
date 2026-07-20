@@ -28,8 +28,11 @@
   left: 0;
   height: calc(100% - 2.2em );
   width: 100%;
+  background-image: none;
   background-color: #008080;
-  color: white; }
+  color: white;
+  background-repeat: repeat;
+  background-position: center; }
 
 #background_text {
   color: #005252;
@@ -43,13 +46,14 @@
 
 #start_menu {
   display: grid;
-  grid-template-rows: 3em 3em 3em 3em 3em 3em;
-  grid-template-columns: 1fr;
-  position: fixed;
-  bottom: 1.8em;
+  grid-template-rows: 1fr;
+  grid-template-columns: 3em 1fr;
+  grid-template-areas: "branding list";
+  position: absolute;
+  bottom: 2.4em;
   left: 0;
   height: 24em;
-  width: 18em;
+  width: 22em;
   background-color: #c0c0c0;
   color: black;
   z-index: 2;
@@ -57,12 +61,64 @@
   border-bottom: 2px solid #000000;
   border-top: 2px solid #ffffff;
   border-left: 2px solid #ffffff; }
-  #start_menu .start_menu_item {
-    display: flex;
-    height: 100%;
-    width: 97%;
-    padding: .2em;
-    align-items: center; }
+  #start_menu #start_menu_branding {
+    grid-area: branding;
+    background-color: #7f7f7f; }
+    #start_menu #start_menu_branding span {
+      position: absolute;
+      left: -2.6em;
+      bottom: 3em;
+      color: #c0c0c0;
+      transform: rotate(-90deg);
+      /* font-weight: bold; */
+      font-size: 2em; }
+  #start_menu #start_menu_list {
+    grid-area: list;
+    display: grid;
+    grid-template-rows: 3em 3em;
+    grid-template-columns: 1fr; }
+    #start_menu #start_menu_list .start_menu_item {
+      display: flex;
+      gap: 8px;
+      margin-left: 0.5em;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      width: 97%;
+      padding: .2em;
+      align-items: center; }
+      #start_menu #start_menu_list .start_menu_item img {
+        height: 80%; }
+    #start_menu #start_menu_list .start_menu_item:hover {
+      background-color: #010080;
+      color: white; }
+    #start_menu #start_menu_list .start_menu_arrow {
+      font-size: 2.5em;
+      transform: translate(0, -10%);
+      margin-left: auto; }
+
+.rollover_menu {
+  position: absolute;
+  left: 22em;
+  padding: 0.2em;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex-basis: 1em;
+  width: 10em;
+  background-color: #c0c0c0;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff; }
+  @media screen and (max-width: 667px) {
+    .rollover_menu {
+      left: 12em; } }
+  .rollover_menu .rollover_menu_item {
+    align-self: flex-start;
+    width: 100%; }
+  .rollover_menu .rollover_menu_item:hover {
+    background-color: #010080;
+    color: white; }
 
 #about_me_text {
   max-width: 60em;
