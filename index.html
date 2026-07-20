@@ -25,10 +25,6 @@
             <img src="ico/Briefcase.ico">
             <span>Work</span>
         </div>
-        <div class="icon" _bind="blog">
-            <img src="ico/Newspaper (yellow 3D).ico">
-            <span>Blog</span>
-        </div>
         <div class="icon" _bind="skills">
             <img src="ico/Book 2.ico">
             <span>Skills</span>
@@ -48,12 +44,6 @@
             <img src="ico/LinkedIn.ico">
             <span>LinkedIn</span>
         </div>
-        <a href="https://drive.google.com/file/d/1oyHX8_nDAUizN1Zm1ESt4mm3W4hjzY0O/view?usp=sharing" target="_blank" style="text-decoration: none; color:white;">
-        <div class="icon extern" _bind="fortune">
-            <img src="ico/w98_computer_crystal_ball.png">
-            <span>Fortune</span>
-        </div>
-        </a>
         </a>
 
 
@@ -62,7 +52,6 @@
 
             <div class="toolbar_button win_btn" _bind="about_me"><img src="ico/User.ico">About Me</div>
             <div class="toolbar_button win_btn" _bind="work"><img src="ico/Briefcase.ico">Work</div>
-            <div class="toolbar_button win_btn" _bind="blog"><img src="ico/Newspaper (yellow 3D).ico">Blog</div>
             <div class="toolbar_button win_btn" _bind="skills"><img src="ico/Book 2.ico">Skills</div>
             <div class="toolbar_button win_btn" _bind="msdos"><img src="ico/MS-DOS logo.ico">MS-DOS</div>
 
@@ -71,7 +60,8 @@
         <div id="hidden_toolbar_buttons" style="visibility: hidden;"></div>
 
         <div id="start_menu">
-            <p>Nothing to see here yet!</p>
+            <div class="start_menu_item">Backgrounds</div>
+            <div class="start_menu_item">Email</div>
         </div>
 
         <div id="closed_windows" style="visibility: hidden;"></div>
@@ -79,65 +69,20 @@
         <div class="window" _bind="about_me" id="w_about_me" >
             <div class="top_decor">
                 <div class="inset">
-                    <span class="title">About Me</span>
-                    <button class="window_close"><span>&times;</span></button>
+                    <span class="title"><img src="ico/User.ico">About Me</span>
+                    <img class="window_close" src="ico/close_window.png">
                 </div>
             </div>
             <div class="window_body">
                 <div id="about_me_text">
-                <h1>Hello!</h1>
-                <p>My name is <strong>Dawson Finklea</strong> and I am a Linux System Administrator, Programmer, and IP Network Technician.</p>
-                <p>I am a recent graduate of the University of North Texas, where I earned my Bachelor's of Science in Computer Science.</p>
-                
-                <h2>Background</h2>
-                <p>
-                    I am originally from Houston and Galveston, Texas. From an early age I remember having a passion for computers.
-                    When I was in elementary school, my classmates and I were given a creative writing assignment to use the website builder Weebly to
-                    create a website for whatever we wanted. Me and my best friend went about creating a detailed site, advertising ourselves as the "Alpha Team", technicians
-                    who were available, for free, to the entire school faculty, should they need assistance with any technical difficulties.
-                </p>
-                <p>
-                    I suppose my fate was sealed then.
-                </p>
-                <p>
-                    That same year, that same best friend took up <a href="https://en.wikipedia.org/wiki/AppleScript">AppleScript</a>, Apple's scripting language
-                    for their MacOS Automation system. I was encouraged to learn it as well, though I didn't get terribly far, it helped me
-                    develop at an early age that necessary cognitive foundation for programming.
-                </p>
-                <p>
-                    I wasn't always sat in front of a computer though. Perhaps one of the strongest through-lines of my childhood was cycling. In 2008, my father founded
-                    <a href="https://chainreactionbikes.org">Chain Reaction Ministries</a>, a volunteer organization based out of our local church at the time, which took in
-                    donated bikes from the Houston community, repaired them, and donated them to homeless shelters and other low-income assistance organizations.
-                    I spent 1 to 2 weekends out of every month working at the church repairing and riding bicycles with my friends, and other volunteers.
-                    Ever since Hurricane Harvey displaced our family in 2017, and our church closed shop a few years later, we haven't been as active, but we still have a workshop,
-                    a trailer, and a handful of bikes waiting to be put to good use.
-                </p>
-                <p>
-                    My father instilled in my his passion for cycling, so I spent a lot of time on the bike trails around Houston, and later on the Seawall in Galveston. I participated
-                    twice in the MS150, a bicycle race from Downtown Houston to Downtown Austin.
-                </p>
-                <h2>Jack of All Trades</h2>
-                <p>
-                    Throughout high school and college, my interests covered many different subjects across computing. I started using Linux regularly at the age of 16, and have since been
-                    something of a homelabber, creating my own cloud storage, music streaming, web hosting, and VPN services. I also must have had nearly 5 different iterations of my personal website,
-                    including this one. As the design of this site might suggest, I have a soft spot for the design language of user interfaces from days past, and frequently incorporate it into my work.
-                </p>
-                <p>
-                    In my sophomore year, I attended Reykjavik University in a study abroad program, and the instruction there was a significant departure from the kind of work I had been doing
-                    at UNT. I recieved some of the best instruction of my college career in the fundamental concepts behind Machine Learning, Cryptography, Networking, and Programming Language Design, 
-                    and Computer Graphics, the knowledge from which I still find incredibly useful and relevant in my career.
-                </p>
-                <p>
-                    In the latter half of my degree, I became interested in alternative home networking solutions after I encountered a number of people in my hometown of Galveston with wireless connectivity
-                    problems. I can't say for sure what the reason was, but I suspect it was because of the nature of the construction of these historic homes. Thick, wooden walls and ceilings do not pass
-                    UHF band radio frequencies well. Many of these older homes, however, had unused phone lines, or coax cabling run throughout the building. I knew that <i>someone</i> must have thought to
-                    use these media to carry ethernet in the past, and sure enough, there were standards like <a href="https://en.wikipedia.org/wiki/Multimedia_over_Coax_Alliance"><b>MoCA</b></a>, or 
-                    <a href="https://en.wikipedia.org/wiki/G.hn"><b>G.hn</b></a>, or even <a href="https://en.wikipedia.org/wiki/HomePlug"><b>HomePlug</b></a> for using the building's power lines.
-                </p>
-                <p>
-                    So far, I've had one successful installation of a HomePlug system for a client in Galveston, and I hope to take advantage of these somewhat overlooked technologies to improve connectivity in places
-                    where Wi-Fi functions poorly, and installing new runs of CAT5 cabling is infeasable.
-                </p>
+                    <p><b>Hello!</b></p>
+                    <p>My name is Dawson Finklea, and I am an IT professional with a B.S. in Computer Science.</p>
+                    <p>I have been an active developer for personal, academic, and professional projects for almost 5 years,
+                        with experience in multiple languages like Python and C#, to more special-purpose languages like Julia.
+                    </p>
+                    <p>I also have an ongoing project to start a side business around my skill and love for classic cars
+                        by offering private tours in a vintage Volkswagen Thing
+                    </p>
                 </div>
             </div>
             <div class="bottom_decor"></div>
@@ -146,11 +91,12 @@
         <div class="window" _bind="work" id="w_work" >
             <div class="top_decor">
                 <div class="inset">
-                    <span class="title">Work</span>
-                    <button class="window_close"><span>&times;</span></button>
+                    <span class="title"><img src="ico/Briefcase.ico">Work</span>
+                    <img class="window_close" src="ico/close_window.png">
                 </div>
             </div>
             <div class="window_body">
+            <div class="window_body_content">
                 <h1>Education</h1>
                 <h3><strong>University of North Texas</strong>, Denton, TX - <i>B.S. Computer Science</i></h3>
                 <h4>AUGUST 2020 - MAY 2025</h4>
@@ -158,7 +104,11 @@
                 <h4>STUDY ABROAD | AUGUST 2022 - DECEMBER 2022</h4>
 
                 <h1>Information Technology Experience<h1>
-                <h3><strong>Gulf Copper and Manufacturing</strong>, Galveston, TX - <i>IT Specialist</i></h3>
+                <h3><strong>Gulf Copper and Manufacturing</strong>, Galveston, TX</h3>
+                <ul style="font-weight: bold;">
+                    <li>IT Technician &rarrow; 01/26 - PRESENT</li>
+                    <li>IT Intern &rarrow; 08/25 - 01/26</li>
+                </ul>
                 <h4>AUGUST 2025 - PRESENT</h4>
                 <ul>
                     <li>Provided IT support and helpdesk services to administrative, managerial, production, and fabrication staff in a marine industrial environment.</li>
@@ -177,77 +127,21 @@
                     <li>Maintained and updated the company website and online services, including domain management, hosting, email configuration, and basic SEO practices.</li>
                     <li>Ensured compliance with basic cybersecurity protocols and advised on improvements in IT policy and usage.</li>
                 </ul>
-    
-                <h3><b>Mansard House</b>, Galveston, TX - <i>Network Installation Technician (Contract)</i></h3>
-                <h4>AUGUST 2024</h4>
-                <ul>
-                    <li>Installed and configured multiple WiFi access points across a large hotel property to improve guest and operational wireless coverage.</li>
-                    <li>Ran and terminated new CAT5e Ethernet cabling to support access point deployment, including routing through ceilings and walls.</li>
-                    <li>Mounted and positioned access points for optimal signal distribution and minimal interference.</li>
-                    <li>Worked with access points from multiple vendors (e.g., Ubiquiti, TP-Link, Cisco) and configured SSIDs, security protocols, and VLANs as needed.</li>
-                    <li>Conducted signal strength and coverage testing using WiFi analyzer tools to ensure consistent performance throughout the facility.</li>
-                    <li>Collaborated with hotel IT and management staff to minimize disruption to operations during installation.</li>
-                </ul>
-    
-                <h3><b>The Byran Museum</b>, Galveston, TX - <i>IT Technician (Contract)</i>
-                <h4>JUNE 2020 - JUNE 2022</h4>
-                <ul>
-                    <li>Created detailed documentation of the museum interactive exhibit kiosk system</li>
-                    <li>Updated and rewrote DCHP and static IP assignments to allow for additional kiosks to be easily added, and maintain a reasonable order.</li>
-                    <li>Collaborated with museum staff to translate and implement Spanish versions of existing exhibit articles.</li>
-                    <li>Performed network administration and system administration duties on an as-needed basis</li>
-                </ul>
-    
-                <h1>Other Experience</h1>
-                <h3><b>Carbon Environmental</b>, Fort Worth, TX - <i>Fuel Systems Technician</i>
-                <h4>MAY 2021 - JULY 2021</h4>
-                <ul>
-                    <li>Installed, maintained, and repaired fuel delivery systems at gas stations and industrial refueling sites, ensuring equipment met operational and safety standards.</li>
-                    <li>Laid electrical and data conduit to support pump operations, sensor systems, and fuel monitoring equipment.</li>
-                    <li>Disassembled, serviced, and reassembled fuel dispensers and underground storage tank components including spill buckets, overfill prevention valves, and piping</li>
-                    <li>Collaborated with a team of technicians to coordinate site work, troubleshoot system issues, and deliver efficient project execution.</li>
-                    <li>Performed system leak detection tests and ensured proper containment and grounding of fuel systems.</li>
-                </ul>
-    
-                <h3><b>The Kava Bar</b>, Denton, TX - <i>Barback</i>
-                <h4>FEBRUARY 2023 - JUNE 2024</h4>
-                <ul>
-                    <li>Supported bartenders by stocking and replenishing bar supplies, ensuring efficient service</li>
-                    <li>Maintained cleanliness and organization of bar area, including restocking glassware, utensils, and napkins</li>
-                    <li>Provided exceptional customer service by promptly fulfilling drink orders and addressing customer inquiries or concerns</li>
-                    <li>Followed all safety protocols regarding handling of hazardous materials such as cleaning agents or broken glassware</li>
-                </ul>
-    
+            </div>
             </div>
             <div class="bottom_decor"></div>
         </div>
 
-        <div class="window" _bind="blog" id="w_blog" >
-            <div class="top_decor">
-                <div class="inset">
-                    <span class="title">Blog</span>
-                    <button class="window_close"><span>&times;</span></button>
-                </div>
-            </div>
-            <div class="file_browser">
-                <a href="blog/legacy_home_networking.html">
-                <div class="icon">
-                    <img src="ico/Web-Document.ico">
-                    <span>An Investigation of Legacy Home Networking</span>
-                </div>
-                </a>
-            </div>
-            <div class="bottom_decor"></div>
-        </div>
 
         <div class="window" _bind="skills" id="w_skills">
             <div class="top_decor">
                 <div class="inset">
-                    <span class="title">Skills</span>
-                    <button class="window_close"><span>&times;</span></button>
+                    <span class="title"><img src="ico/Book 2.ico">Skills</span>
+                    <img class="window_close" src="ico/close_window.png">
                 </div>
             </div>
             <div class="window_body">
+            <div class="window_body_content">
                 <strong>Here is a brief list of my strongest skills in Computer Science</strong>
                 <br>
                 <h2>Programming Languages</h2>
@@ -278,14 +172,15 @@
                     <li>Scripting and Automation</li>
                 </ul>
             </div>
+            </div>
             <div class="bottom_decor"></div>
         </div>
 
         <div class="window" _bind="msdos" id="w_msdos" style="width:700px;height:450px;max-width:90%;">
             <div class="top_decor">
                 <div class="inset">
-                    <span class="title">MS-DOS</span>
-                    <button class="window_close"><span>&times;</span></button>
+                    <span class="title"><img src="ico/MS-DOS logo.ico">MS-DOS</span>
+                    <img class="window_close" src="ico/close_window.png">
                 </div>
             </div>
             <!-- <iframe class="emulator_window" height="100%" width="100%" src="/v86/freedos.html"></iframe> -->
@@ -304,6 +199,8 @@
     all = "about_me"
     msdos_booted = false;
 
+    var window_stack = [];
+
     $( function(){
         $(".window").draggable({containment: $("#desktop"), handle: $(".top_decor")});
         $(".window").resizable({containment: $("#desktop")});
@@ -319,8 +216,13 @@
         bind = $(event.currentTarget).attr("_bind");
         win = $(".window").filter(`[_bind="${bind}"]`);
         win_btn = $(".win_btn").filter(`[_bind="${bind}"]`);
-        win.appendTo("#desktop");
-        
+
+        if($(win[0]).parent("#desktop").length == 0){
+            win.appendTo("#desktop");
+        }
+
+        bring_window_forward($(win)[0]);
+
         if(!$("#toolbar").has(win_btn).length){
             win_btn.appendTo("#toolbar");
         }
@@ -339,10 +241,33 @@
         win = $(event.currentTarget).parents(".window");
         win.appendTo("#closed_windows");
         $(".win_btn").filter(`[_bind=${win.attr("_bind")}]`).appendTo("#hidden_toolbar_buttons");
+
+        window_stack = window_stack.filter((id)=> id != win.id);
+    }
+
+
+
+    function bring_window_forward(jquery_window){
+        console.log("Moving window to top");
+        if(jquery_window == undefined) return;
+
+        let replace = window_stack.filter((id) => id != jquery_window.id);
+        replace.forEach((id) => {
+            $('#'+id).removeClass("active_window");
+        })
+        $(jquery_window).addClass("active_window");
+        replace.push(jquery_window.id);
+
+        replace.forEach((id, index)=>{
+            $('#'+id).css("z-index", 2+index);
+        })
+        console.log(replace);
+        window_stack = replace;
+        console.log(window_stack);
     }
 
     $(".window").appendTo("#closed_windows");
-    $(".window").on("mousedown", (ev)=>{$(ev.currentTarget).appendTo("#desktop")});
+    $(".window").on("mousedown", (ev)=>{bring_window_forward(ev.currentTarget)});
     $(".win_btn").appendTo("#hidden_toolbar_buttons");
     $(".win_btn").click(open_window);
     $(".icon").click(open_window);
