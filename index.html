@@ -57,9 +57,13 @@
             <img src="ico/Book 2.ico">
             <span>Skills</span>
         </div>
-        <div class="icon" _bind="msdos">
-            <img src="ico/MS-DOS logo.ico">
-            <span>MS-DOS</span>
+        <div class="icon" _bind="freedos">
+            <img src="ico/freedos.ico">
+            <span>FreeDOS</span>
+        </div>
+        <div class="icon" _bind="doom">
+            <img src="ico/doom.ico">
+            <span>DOOM</span>
         </div>
         <a href="https://www.github.com/reckoncrafter/vrblocks" target="_blank" style="text-decoration: none; color:white;">
         <div class="icon extern" _bind="github">
@@ -81,7 +85,8 @@
             <div class="toolbar_button win_btn" _bind="about_me"><img src="ico/User.ico">About Me</div>
             <div class="toolbar_button win_btn" _bind="work"><img src="ico/Briefcase.ico">Work</div>
             <div class="toolbar_button win_btn" _bind="skills"><img src="ico/Book 2.ico">Skills</div>
-            <div class="toolbar_button win_btn" _bind="msdos"><img src="ico/MS-DOS logo.ico">MS-DOS</div>
+            <div class="toolbar_button win_btn" _bind="freedos"><img src="ico/freedos.ico" height="32" width="32">FreeDOS</div>
+            <div class="toolbar_button win_btn" _bind="doom"><img src="ico/doom.ico">DOOM</div>
 
             <div class="clock"></div>
         </div>
@@ -227,28 +232,59 @@
             <div class="bottom_decor"></div>
         </div>
 
-        <div class="window" _bind="msdos" id="w_msdos" style="width:700px;height:450px;max-width:90%;">
+        <div class="window" _bind="freedos" id="w_freedos">
             <div class="top_decor">
                 <div class="inset">
-                    <span class="title"><img src="ico/MS-DOS logo.ico">MS-DOS</span>
+                    <span class="title"><img src="ico/freedos.ico" height="32" width="32">FreeDOS</span>
                     <img class="window_close" src="ico/close_window.png">
                 </div>
             </div>
-            <!-- <iframe class="emulator_window" height="100%" width="100%" src="/v86/freedos.html"></iframe> -->
+            <div id="dos_container" class="window_body fullscreen" style="overflow: hidden;">
+                <div style="white-space: pre; font: 14px monospace; line-height: 14px"></div>
+                <canvas style="display: none"></canvas>
+            </div>
             <div class="bottom_decor">
-                <span>Thank you to the <a href="https://copy.sh/v86/">v86 Project</a> for this wonderful WebAssembly emulator!</span>
+                <span><a href="https://copy.sh/v86/">v86</a></span>
+            </div>
+        </div>
+        
+        <style>
+            #screen_canvas{
+                height: 100% !important;
+                width: 100% !important;
+                object-fit: contain;
+            }
+        </style>
+
+        <div class="window" _bind="doom" id="w_doom">
+            <div class="top_decor">
+                <div class="inset">
+                    <span class="title"><img src="ico/doom.ico">DOOM</span>
+                    <img class="window_close" src="ico/close_window.png">
+                </div>
+            </div>
+            <div id="doom_container" class="window_body fullscreen" style="overflow: hidden">
+                <div style="white-space: pre; font: 14px monospace; line-height: 14px"></div>
+                <canvas style="display: none" id="screen_canvas"></canvas>
+            </div>
+            <div class="bottom_decor">
+                <button id="doom_fullscreen">Go Fullscreen</button>
+                <a href="https://copy.sh/v86/">v86</a>
             </div>
         </div>
 
+        <template id="emulator_template">
+
+        </template>
 
     </div>
 </div>
 
 <script src="/jquery-3.71.js"></script>
 <script src="/jquery-ui.js"></script>
+<script src="/v86/build/libv86.js"></script>
 <script>
     all = "about_me"
-    msdos_booted = false;
 
     var window_stack = [];
 
@@ -271,7 +307,35 @@
 
         $(".window").appendTo("#closed_windows");
         $("#w_welcome").appendTo("#desktop");
+
+        // emulator setup
+        $("#doom_fullscreen").click((ev) => {
+            doom.screen_go_fullscreen("doom_container");
+        });
     });
+
+    V86.prototype.screen_go_fullscreen = function(container_id)
+    {
+        if(!this.screen_adapter) return;
+        var elem = document.getElementById(container_id);
+        if(!elem) return;
+
+        var fn = elem["requestFullScreen"] ||
+                elem["webkitRequestFullscreen"] ||
+                elem["mozRequestFullScreen"] ||
+                elem["msRequestFullScreen"];
+
+        if(fn)
+        {
+            fn.call(elem);
+            // var focus_element = document.getElementsByClassName("phone_keyboard")[0];
+            // focus_element && focus_element.focus();
+        }
+        try {
+            navigator.keyboard.lock();
+        } catch(e) {}
+        this.lock_mouse();
+    };
 
     function open_window(event){
         bind = $(event.currentTarget).attr("_bind");
@@ -290,11 +354,54 @@
         $("#start_menu").hide();
     }
 
-    function boot_v86(){
-        if(!msdos_booted){
-            msdos_booted = true;
-            msdos_element = $('<iframe class="emulator_window" height="100%" width="100%" src="/v86/freedos.html"></iframe>');
-            $(".window").filter("[_bind='msdos']").append(msdos_element);
+    var dos;
+    function boot_dos_v86(){
+        if(!dos || !dos.is_running()){
+            console.log($("#emulator_template"));
+            dos_emulator = new V86({
+                wasm_path: "/v86/build/v86.wasm",
+                memory_size: 32 * 1024 * 1024,
+                vga_memory_size: 2 * 1024 * 1024,
+                screen_container: document.getElementById("dos_container"),
+                bios: {
+                    url: "/v86/bios/seabios.bin",
+                },
+                vga_bios: {
+                    url: "/v86/bios/vgabios.bin",
+                },
+                fda: {
+                    url: "/v86/images/freedos722.img",
+                },
+                autostart: true,
+            });
+            //$(".window").filter("[_bind='freedos']").append(dos_element);
+        }
+    }
+
+    var doom;
+    function boot_doom_v86(){
+        if(!doom || !doom.is_running()){
+            doom = new V86({
+                wasm_path: "/v86/build/v86.wasm",
+                memory_size: 32 * 1024 * 1024,
+                vga_memory_size: 8 * 1024 * 1024,
+                //screen_container: document.getElementById("screen_container"),
+                bios: {
+                    url: "/v86/bios/seabios.bin",
+                },
+                vga_bios: {
+                    url: "/v86/bios/vgabios.bin",
+                },
+                fda: {
+                    url: "/v86/images/doof-fda.img"
+                },
+                autostart: true,
+                screen: {
+                    container: document.getElementById("doom_container"),
+                    use_graphical_text: true
+                }
+            });
+            
         }
     }
 
@@ -319,8 +426,6 @@
         localStorage.setItem("background_setting", selection);
     }
 
-
-
     function bring_window_forward(jquery_window){
         if(jquery_window == undefined) return;
 
@@ -338,13 +443,25 @@
         $("#start_menu").hide();
     }
 
+
     $(".window").on("mousedown", (ev)=>{bring_window_forward(ev.currentTarget)});
     $(".win_btn").appendTo("#hidden_toolbar_buttons");
     $(".win_btn").click(open_window);
     $(".icon").click(open_window);
-    $(".icon").filter("[_bind='msdos']").click(boot_v86);
+    $(".icon").filter("[_bind='freedos']").click(boot_dos_v86);
+    $(".icon").filter("[_bind='doom']").click(boot_doom_v86);
     $(".window").find(".window_close").click(close_window);
-    $("#start_menu_welcome").click(open_window)
+    $("#start_menu_welcome").click(open_window);
+
+    $("#w_doom").find(".window_close").click(async ()=>{
+        await doom.stop();
+        await doom.destroy();
+    })
+
+    $("#w_freedos").find(".window_close").click(async ()=>{
+        await dos.stop();
+        await dos.destroy();
+    })
 
     $(".start_menu_item").mouseenter((event)=>{
         let bind = $(event.target).attr("_bind");
@@ -367,7 +484,6 @@
     $("#start_button").click(()=>{$("#start_menu").toggle()});
 
     $(".extern").append(`<img src="/ico/shortcut_overlay.png" class="shortcut_icon">`);
-
 
 </script>
 

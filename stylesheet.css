@@ -240,7 +240,6 @@
   grid-template-rows: 2.0em auto 2.0em;
   height: 75vh;
   width: 75vw;
-  overflow: hidden;
   border-right: 4px solid #000000;
   border-bottom: 4px solid #000000;
   border-top: 4px solid #ffffff;
@@ -290,6 +289,8 @@
     background-color: #c0c0c0;
     border-top: 2px solid white;
     grid-area: footer; }
+    .window .bottom_decor span {
+      font-size: 0.8em; }
 
 .file_browser {
   background-color: white;
@@ -318,6 +319,15 @@
   width: 100%;
   height: calc(100% - 2 * 2em);
   top: 2em; }
+
+.fullscreen {
+  display: flex;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  background-color: black !important; }
 
 img {
   image-rendering: optimizeSpeed;
