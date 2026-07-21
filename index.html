@@ -11,10 +11,10 @@
     <div id="start_menu">
         <div id="start_menu_branding"><span><b>Finklea</b>95</span></div>
         <div id="start_menu_list">
-            <div class="start_menu_item" _bind="backgrounds">
+            <div class="start_menu_item" _bind="theme">
                 <img src="ico/w98_display_properties.ico">
-                <span>Backgrounds</span>
-                <span class="start_menu_arrow">&#x2023;</span>
+                <span>Theme</span>
+                <!-- <span class="start_menu_arrow">&#x2023;</span> -->
             </div>
             <div class="start_menu_item" id="start_menu_welcome" _bind="welcome">
                 <img src="ico/w98_tip.ico">
@@ -26,14 +26,14 @@
             </a> -->
         </div>
 
-        <div class="rollover_menu" style="right:-4em;" _bind="backgrounds">
+        <!-- <div class="rollover_menu" style="right:-4em;" _bind="backgrounds">
             <div class="rollover_menu_item" _select="none">Default</div>
             <div class="rollover_menu_item" _select="thatch2.png">Black Thatch</div>
             <div class="rollover_menu_item" _select="egypt.png">Carved Stone</div>
             <div class="rollover_menu_item" _select="bamboo.png">Straw Mat</div>
             <div class="rollover_menu_item" _select="pyramid2.png">Triangles</div>
             <div class="rollover_menu_item" _select="halftone.png">Waves</div>
-        </div>
+        </div> -->
     </div>
 
     <div id="desktop">
@@ -273,9 +273,32 @@
             </div>
         </div>
 
-        <template id="emulator_template">
-
-        </template>
+        <div class="window" _bind="theme" id="w_theme">
+            <div class="top_decor">
+                <div class="inset">
+                    <span class="title"><img src="ico/w98_display_properties.ico" height="32" width="32">Theme</span>
+                    <img class="window_close" src="ico/close_window.png">
+                </div>
+            </div>
+            <div class="window_body">
+                <div class="window_body_content">
+                    <h2>Backgrounds</h2>
+                    <div id="backgrounds_menu" style="margin-bottom: 1em;">
+                        <span _select="none">Default</span>
+                        <span _select="thatch2.png">Black Thatch</span>
+                        <span _select="egypt.png">Carved Stone</span>
+                        <span _select="bamboo.png">Straw Mat</span>
+                        <span _select="pyramid2.png">Triangles</span>
+                        <span _select="halftone.png">Waves</span>
+                    </div>
+                    <div style="margin-bottom: 1em;">Scale: <input type="range" id="bg_scale" min="1" max="8"></div>
+                    <hr>
+                    <div style="padding-bottom: 1em;">Icon text highlighting <input type="checkbox" id="text_highlight"></div>
+                    <div>Highlight color <input type="color" id="highlight_color" value="#010080" disabled></div>
+                </div>
+            </div>
+            <div class="bottom_decor"></div>
+        </div>
 
     </div>
 </div>
@@ -303,6 +326,19 @@
         if(bg != null){
             let css_str = bg == "none" ? "none" : `url("ico/${bg}")`;
             $("#desktop").css("background-image", css_str);
+        }
+
+        let bg_scale = localStorage.getItem("background_scale");
+        if(bg_scale != null){
+            $("#desktop").css("background-size", `${bg_scale}em`);
+        }
+
+        let hl_enabled = localStorage.getItem("text_highlight_enabled");
+        let hl_color = localStorage.getItem("text_highlight_color");
+        if(hl_enabled != null){
+            if(hl_enabled){
+                $(".icon span").css("background-color", hl_color);
+            }
         }
 
         $(".window").appendTo("#closed_windows");
@@ -451,7 +487,7 @@
     $(".icon").filter("[_bind='freedos']").click(boot_dos_v86);
     $(".icon").filter("[_bind='doom']").click(boot_doom_v86);
     $(".window").find(".window_close").click(close_window);
-    $("#start_menu_welcome").click(open_window);
+    $(".start_menu_item").click(open_window);
 
     $("#w_doom").find(".window_close").click(async ()=>{
         await doom.stop();
@@ -463,16 +499,44 @@
         await dos.destroy();
     })
 
-    $(".start_menu_item").mouseenter((event)=>{
-        let bind = $(event.target).attr("_bind");
-        if(bind == undefined) return;
-        $(".rollover_menu").filter(`[_bind=${bind}]`).show();
+    // $(".start_menu_item").mouseenter((event)=>{
+    //     let bind = $(event.target).attr("_bind");
+    //     if(bind == undefined) return;
+    //     $(".rollover_menu").filter(`[_bind=${bind}]`).show();
+    // })
+    // $("#start_menu").mouseleave((event)=>{
+    //     $(".rollover_menu").hide();
+    // })
+
+    // $(".rollover_menu_item").click(change_background);
+
+    $("#backgrounds_menu span").click(change_background);
+    $("#bg_scale").on("change", (event)=>{
+        let scale = $("#bg_scale").val()
+        $("#desktop").css("background-size", `${scale}em`);
+        localStorage.setItem("background_scale", scale);
     })
-    $("#start_menu").mouseleave((event)=>{
-        $(".rollover_menu").hide();
+    $("#text_highlight").on("change", (event)=>{
+        let checked = $("#text_highlight").is(":checked");
+        let color = $("#highlight_color").val();
+        console.log(color);
+        if(checked){
+            $("#highlight_color").prop("disabled", false);
+            $(".icon span").css("background-color", color);
+        }
+        else{
+            $("#highlight_color").prop("disabled", true);
+            $(".icon span").css("background-color", "");
+        }
+        localStorage.setItem("text_highlight_enabled", checked);
+    })
+    $("#highlight_color").on("change", (event)=>{
+        let color = $("#highlight_color").val();
+        $(".icon span").css("background-color", color);
+        localStorage.setItem("text_highlight_color", color);
     })
 
-    $(".rollover_menu_item").click(change_background);
+
 
     var clock = $(".clock");
     setInterval(()=>{
