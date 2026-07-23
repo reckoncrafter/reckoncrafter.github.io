@@ -122,6 +122,7 @@ $startmenuwidth: 22em;
             width: 97%;
             padding: .2em;
             align-items: center;
+            cursor: default;
 
             img{
                 height: 80%;
@@ -172,8 +173,8 @@ $startmenuwidth: 22em;
 }
 
 .icon {
-    padding: 0.75rem;
-    flex-basis: 6rem;
+    padding: 0.25rem;
+    //flex-basis: 6rem;
     align-self: flex-start;
 
     aspect-ratio: 1 / 1;
@@ -194,12 +195,15 @@ $startmenuwidth: 22em;
     }
 }
 
-.shortcut_icon{
-    position:relative;
-    left:-1.0em;
-    bottom: 5.5em;
-    scale: 0.8;
+.extern{
+    display: grid;
+    grid-template-columns: 0;
+    grid-template-rows: 1fr;
+    img{
+        grid-area: 1;
+    }
 }
+
 
 .icon:hover{
   border: 1px solid grey;
@@ -277,6 +281,7 @@ $startmenuwidth: 22em;
 
     color:black;
     font-weight: bold;
+    cursor: default;
   
     padding-left:1.5em;
     padding-right:1.5em;
